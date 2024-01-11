@@ -1,7 +1,7 @@
 Hello, world!
 ---
 About me:
-![Image]([url](https://ideascdn.lego.com/media/generate/entity/lego_ci/project/b48f0a29-e7a7-4fcf-b612-a73e6a106e83/1/resize:1600:900/legacy)https://ideascdn.lego.com/media/generate/entity/lego_ci/project/b48f0a29-e7a7-4fcf-b612-a73e6a106e83/1/resize:1600:900/legacy)
+![Image](https://ideascdn.lego.com/media/generate/entity/lego_ci/project/b48f0a29-e7a7-4fcf-b612-a73e6a106e83/1/resize:1600:900/legacy)
 
 **I like Legos!** and anything *car* or *tech* related topics!
 ---
