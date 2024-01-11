@@ -11,10 +11,17 @@ The `cd` command is known as to 'change directory' in the Terminal. Similar to d
 Simply put, if you use the `cd` command without any path followed after the command...then nothing happens and the terminal prompts the user to provide an input.
 
 
-*What if you use `cd` followed with a `<path>` or argument?*
-- Say for example your file structure is `home-->Downloads-->cse15L-->lectures` and you are currently at the home directory. However, you want to get to the `Downloads` directory.
+*What if you want to use `cd` to a directory as an argument?*
+- Say for example your file structure is `home-->Downloads-->cse15l-->hello.java` and you are currently at the home directory. However, you want to get to the `Downloads` directory.
 ```
 [user@sahara -]$ cd Downloads
 [user@sahara ~Downloads/]$
 ```
 > You see that `cd Downloads` means that we are changing the directory to `Downloads` and you will know that it worked sucessfully once the prompt changes. This is where you see that `user@sahara -]` changes to `[user@sahara ~Downloads/]`.
+
+*What if you want to use `cd` to a file as an argument?*
+- Let us take the same file structure from before but in this case, you want to get to the hello.java file.
+```
+[user@sahara -]$ cd Downloads/cse15l
+[user@sahara ~Downloads/cse15l/]$
+```
