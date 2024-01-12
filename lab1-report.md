@@ -16,7 +16,7 @@ Simply put, if you use the `cd` command without any path followed after the comm
 - Say for example your file structure is `home-->Downloads-->cse15l-->hello.java` and you are currently at the home directory. However, you want to get to the `Downloads` directory.
 ```
 [user@sahara ~]$ cd Downloads
-[user@sahara ~Downloads/]$
+[user@sahara ~Downloads]$
 ```
 > You see that `cd Downloads` means that we are changing the directory to `Downloads` and you will know that it worked sucessfully once the prompt changes. This is where you see that `user@sahara -]` changes to `[user@sahara ~Downloads/]`. Now, we have moved to the Downloads directory and access files that are specifically in that file. (More on that when we go over the `ls` command).
 
@@ -67,3 +67,61 @@ Downloads/cse15l/hello.java
 
 ## cat
 The `cat` command is a shorthand name for "concatenate". While one might think that this command would combine files or directories together, `cat` reads the file and returns the contents of the file.
+
+**What if you use `cat` with no arguments?**
+- Let us say that the file structure is the same as before (home-->Downloads-->cse15l-->hello.java) and we are in the home directory.
+```
+[user@sahara ~]$ cat
+1
+1
+2
+2
+3
+3
+^C
+[user@sahara ~]$
+```
+> When the command cat runs without an argument, the prompt disappears and the terminal is waiting for user input. In this case, 1 was entered **once** but it appears twice. When 2 is entered once, it appears once more. The same goes when 3 is entered. What happens here is that the `cat` command is reading the user input and returning it back (printing) to us. Also note that this is a loop and continues unless the user hits `CTRL+C` (Windows) to exit out the loop.
+
+**What if you use `cat` with a path to a directory as an argument?**
+- With the same file structure as before, let us try to use the command onto Downloads.
+```
+[user@sahara ~]$ cat Downloads
+cat: Downloads: Is a directory
+[user@sahara ~]$
+```
+> Note that the command did not print out anything but the error message that Downloads is a directory whereas the command `cat` deals with reading files (and not directories).
+
+**What if you use `cat` with a path to a file as an argument?**
+Let us say that we want the command to read and return the contents that are in hello.java. We can do so either by:
+
+1) changing the directory with the path to the file, then using the `cat` command to the file as the argument
+```
+[user@sahara ~]$ cd Downloads/cse15l
+[user@sahara ~Downloads/cse15l]$ cat hello.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class Hello {
+  public static void main(String[] args) throws IOException {
+    String content = Files.readString(Path.of(args[0]), StandardCharsets.UTF_8);
+    System.out.println(content);
+  }
+}[user@sahara ~]$
+```
+2) or include the path to the file without changing the directory as the argument
+```
+[user@sahara ~]$ cat Downloads/cse15l/hello.java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class Hello {
+  public static void main(String[] args) throws IOException {
+    String content = Files.readString(Path.of(args[0]), StandardCharsets.UTF_8);
+    System.out.println(content);
+  }
+}[user@sahara ~]$
+```
+> Both work but the key idea is that `cat` will read and return the contents of a file, not a directory.
