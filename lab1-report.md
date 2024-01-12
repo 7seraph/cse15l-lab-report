@@ -21,12 +21,12 @@ Simply put, if you use the `cd` command without any path followed after the comm
 > You see that `cd Downloads` means that we are changing the directory to `Downloads` and you will know that it worked sucessfully once the prompt changes. This is where you see that `user@sahara -]` changes to `[user@sahara ~Downloads/]`. Now, we have moved to the `Downloads` directory and access files that are specifically in that file. (More on that when we go over the `ls` command).
 
 **What if you want to use `cd` to a file as an argument?**
-- Let us take the same file structure from before (and that we are in the `home` directory) but in this case, you want to get to the hello.java file.
+- Let us take the same file structure from before (and that we are in the `home` directory) but in this case, you want to get to the `hello.java` file.
 ```
 [user@sahara ~]$ cd Downloads/cse15l/hello.java
 bash: cd: hello.java: Not a directory
 ```
-> Note that `cd Downloads/cse15l/hello.java` resulted in an error message because hello.java is a file and not a directory.
+> Note that `cd Downloads/cse15l/hello.java` resulted in an error message because `hello.java` is a file and not a directory.
 
 Therefore, we can navigate to the closest directory to the file by doing:
 ```
