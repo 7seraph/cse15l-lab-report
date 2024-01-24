@@ -19,7 +19,7 @@ The `cd` command is known as to 'change directory' in the Terminal. Similar to d
 ```
 > You see that `cd Downloads` means that we are changing the directory to `Downloads` and you will know that it worked sucessfully once the prompt changes. This is where you see that `user@sahara -]` changes to `[user@sahara ~Downloads/]`. Now, we have moved to the `Downloads` directory and access files that are specifically in that file. (More on that when we go over the `ls` command).
 
-Now let's say that you are in the `Downloads` directory and then use the `cd` command. What will happen?
+- Now let's say that you are in the `Downloads` directory and then use the `cd` command. What will happen?
 ```
 [user@sahara ~]$ cd Downloads
 [user@sahara ~Downloads]$ cd
@@ -27,7 +27,7 @@ Now let's say that you are in the `Downloads` directory and then use the `cd` co
 ```
 > Notice how `cd Downloads` changes the current directory to `Downloads` and once we use the `cd` command after with no path or argument, we would not be in a directory. 
 
-Here is one example where we are in 2 directories:
+- Here is one example where we are in 2 directories:
 ```
 [user@sahara ~]$ cd Downloads
 [user@sahara ~Downloads]$ cd cse15l
