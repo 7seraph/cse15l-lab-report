@@ -66,7 +66,7 @@ class ChatServer {
 - The `String` arrays are used to as parameters to identify where in the url we want `user`and `message` to be. In this case, we are following the format: `/add-message?s=<string>&user=<string>`. We also need to create a `String` such that the message we see on the server follows the format: `user: message`. Note: we also want to add `\n` such that the next message will be printed on a new line.
 - If there are more users, then it will be concatenated (ie. `user1+user2`). The same goes for the message too!
 ---
-### Examples
+### Example 1
 ![img](ChatServerMessage_1.png)
 - The `url.getPath().contains("add-message")` includes `.getPath()` to obtain the url path of the server. Then `.contains()` is called to check if the url path includes the string `add-message`. If so, then it will return `true`. From there, we will go into the `if-statement` where 3 String arrays are created. The `.getQuery()` method will obtain whatever is after the query (after the "?"). Then we will use `.split(&)` to split the query into 2 elements in the String array between `&`:
 ```
@@ -74,4 +74,7 @@ s=Hello&user=jpolitz
 ["s=Hello", "user=jpolitz"]
 ```
 > This is stored in a String variable named `parameter`. We split once more to obtain the message and user with `.split("=")` **TODO: explain where s= and user= goes!!!
-- Since `parameter` is String[], we can index and define what element is the user and the message.
+- Since `parameter` is String[ ], we can index and define what element is the user and the message. In the end, the url and String array gets changed.
+
+### Example 2
+![img]()
