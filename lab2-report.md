@@ -10,7 +10,6 @@ import java.util.ArrayList;
 class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
-    //int num = 0;
     ArrayList<String> strMessage = new ArrayList<String>();
     public String handleRequest(URI url) {
         String user;
@@ -20,19 +19,8 @@ class Handler implements URLHandler {
             String[] userParameter = parameters[1].split("=");
             String[] messageParameter = parameters[0].split("=");
 
-            if (userParameter.length > 1) {
-                user = userParameter[1];
-            }
-            else {
-                user = " ";
-            }
-
-            if (messageParameter.length > 1) {
-                message = messageParameter[1];
-            }
-            else {
-                message = " ";
-            }
+            user = userParameter[1];
+            message = messageParameter[1];
 
             if (!user.isEmpty() && !message.isEmpty()) {
                 String newMessage = user + ": " + message;
@@ -70,11 +58,25 @@ class ChatServer {
 ![img](ChatServerMessage_1.png)
 - The `url.getPath().contains("add-message")` includes `.getPath()` to obtain the url path of the server. Then `.contains()` is called to check if the url path includes the string `add-message`. If so, then it will return `true`. From there, we will go into the `if-statement` where 3 String arrays are created. The `.getQuery()` method will obtain whatever is after the query (after the "?"). Then we will use `.split(&)` to split the query into 2 elements in the String array between `&`:
 ```
-s=Hello&user=jpolitz
+"s=Hello&user=jpolitz"
 ["s=Hello", "user=jpolitz"]
 ```
 > This is stored in a String variable named `parameter`. We split once more to obtain the message and user with `.split("=")` **TODO: explain where s= and user= goes!!!
 - Since `parameter` is String[ ], we can index and define what element is the user and the message. In the end, the url and String array gets changed.
+```
+user = ["user", jpolitz"]
+message = ["s=", "Hello"]
+```
+> This is what I think `.split("=")` would work and why we use index at 1 rather than at index 0.
 
 ### Example 2
-![img]()
+![img](ChatServerMessage_2.png)
+- The same methods from example 1 are used and displayed on `ChatServer`, including the previous chat (example 1). `url.getPath().contains("add-message")` is called and we can break it down such that `url.getPath()` obtains the path of the url server and then `.contains("add-message")` checks if the path contains the string `"add-message"`. If the method returns `true`, then we create one main String array named `parameter` which calls the `.getQuery()` to obtain the path after the `?` and then calls `.split(&)` to split the String to separate using `&` as the location to split the string.
+```
+Parameters = ["s=According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. Yellow, black. Yellow, black. Ooh, black and yellow! Let's shake it up a little. Barry! Breakfast is ready! Ooming! Hang on a second. Hello? - Barry? - Adam? - Oan you believe this is happening? - I can't. I'll pick you up. Looking sharp. Use the stairs. Your father paid good money for those. Sorry. I'm excited. Here's the graduate. We're very proud of you, son. A perfect report card, all B's. Very proud. Ma! I got a thing going here. - You got lint on your fuzz. - Ow! That's me! - Wave to us! We'll be in row 118,000. - Bye! Barry, I told you, stop flying in the house! - Hey, Adam. - Hey, Barry. - Is that fuzz gel? - A little. Special day, graduation. Never thought I'd make it. Three days grade school, three days high school. Those were awkward. Three days college. I'm glad I took a day and hitchhiked around the hive. You did come back different. - Hi, Barry. - Artie, growing a mustache? Looks good. - Hear about Frankie? - Yeah. - You going to the funeral? - No, I'm not going." , "user=kevin" ] 
+```
+> We sucessfully separated the path into 2 elements in the array: one **large** message at index 0 (Parameters[0]) and a user at index 1 (Parameters[1]).
+- `.split("=")` is called to split the string of index 1 (the user) and assign it to userParameter. We call `.split("=")` once more *but* on the large string message (Parameter[1]) wherever it sees a `=` and assign it to messageParameter.
+- Then we concatenate the user and message, following the format: `user : message` with a new line `\n`.
+---
+## Part 2: SSH Keys
