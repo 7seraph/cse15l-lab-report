@@ -67,4 +67,4 @@ class ChatServer {
 > If there is no input, then server will return a nice message (`This is the beginning of your chat!`). As of now, any path that is not in the format: `/add-message?s=<string>&user=<string>` will return the `This is the beginning of your chat!` message. You can also view the chat history as long as the server is still running and you send a message using the path `/add-message?s=<string>&user=<string>`.
 ---
 ### Examples
-![img]()
+![img](ChatServerMessage_1.png)
