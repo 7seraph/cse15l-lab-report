@@ -80,3 +80,15 @@ Parameters = ["s=According to all known laws of aviation, there is no way a bee 
 - Then we concatenate the user and message, following the format: `user : message` with a new line `\n`.
 ---
 ## Part 2: SSH Keys
+![img](terminal_keys.png)
+> Note: The location of the key after the `ssh-keygen` command in the terminal will let you know where your public key is stored. If you have already used `ssh-keygen` before but don't remember where your keys are stored, I believe that they are located in a similar absolute path for all (not sure for MacOS). I also don't have written down my private key but I think it's the one without the `.pub`(`.pub` means "Publisher" document file, similar to PDfs--I think)
+
+- The absolute path for my private key is: `/c/Users/trank/.ssh/id_ed25519`
+- The absolute path for my public key is: `/c/Users/trank/.ssh/id_ed25519.pub`
+
+![img](terminal_interaction.png)
+> You will know that you have sucessfully inputted your key when you do not need to input your password! Keep in mind that the server recognizes my device (my laptop: `trank@LAPTOP-R60GQ529`). If I wanted to `ssh` into the `ieng6` server on a different device, I would have to verify again because the server does not recognize a new device...
+---
+## Part 3: I Learned Something New!
+
+I did not know that we could generate our public and private key such that we can login into the `ieng6` servers without inputting our password everytime. I learned how to run a server--with the help of `NumberServer.java` and `Server.java`. I also learned how to read a url and that the bunch of random characters, numbers, and symbols sent information to the webpage. Finally, I learned that `bash` and `powershell` are two unique terminals.
