@@ -87,7 +87,7 @@ Parameters = ["s=According to all known laws of aviation, there is no way a bee 
 - The absolute path for my public key is: `/c/Users/trank/.ssh/id_ed25519.pub`
 
 ![img](terminal_interaction.png)
-You will know that you have sucessfully inputted your key when you do not need to input your password! Keep in mind that the server recognizes my device (my laptop: `trank@LAPTOP-R60GQ529`). If I wanted to `ssh` into the `ieng6` server on a different device, I would have to verify again because the server does not recognize a new device
+> You will know that you have sucessfully inputted your key when you do not need to input your password! Keep in mind that the server recognizes my device (my laptop: `trank@LAPTOP-R60GQ529`). If I wanted to `ssh` into the `ieng6` server on a different device, I would have to verify again because the server does not recognize a new device
 
 ---
 ## Part 3: I Learned Something New!
