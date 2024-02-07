@@ -58,8 +58,8 @@ class ChatServer {
 ### Example 1
 ![img](ChatServerMessage_1.png)
 - Firstly, we need the program to obtain the url of the local server when we run `ChatServer`. This is where `handleRequest` comes into play! The `handleRequest(URI url)` method proceses the request in the parameter. In this case, it is the url of the server and saves it as a variable named `url` which is a `String` type. The `url.getPath().contains("/add-message")` includes `.getPath()` to obtain the url path of the server. Then `.contains()` is called to check if the url path includes the string `/add-message`. If so, then it will return `true`. From there, we will go into the `if-statement` where 3 String arrays are created. The `.getQuery()` method will obtain whatever is after the query (after the `?`). Then we will use `.split(&)` to split the query into 2 elements in the String array between `&`. We use the `isEmpty()` method on both the user and message to check if `user` and `message` is not empty. Then we create a history of the conversation in `ChatServer` with `strMessage.add(newMessage)` where it stores in the format `user : message` in each index of the ArrayList. Finally, `String.join("\n", newMessage)` is a method that is called so that each message is returned on a new line. Why would we put `"\n"` first? It's because after returning `newMessage`, we want the next message to be on a new line. I would think that swtiching the order (`String.join(newMessage, "\n")`) would also work because it would return `newMessage` and then go to a new line.
----
-Before:
+
+#### Before:
 ```
 String user; --> user = null;
 String message; --> message = null;
@@ -68,8 +68,8 @@ String message; --> message = null;
 ["s=Hello", "user=jpolitz"]
 ```
 > Initially, `user` and `message` are not assigned so they are by default `null`. We split once more to obtain the message and user with `.split("=")`. Since `parameter` is String[ ], we can index and define what element is the user and the message. In the end, the url and String array gets changed.
----
-After:
+
+#### After:
 ```
 user = ["user", "jpolitz"]
 message = ["s=", "Hello"]
