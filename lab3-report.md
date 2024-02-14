@@ -230,7 +230,9 @@ $ less -N -pmoney government/Media/Oregon_Poor.txt
      80 disadvantaged drowning in the legal surf.
 ```
 > I did use `-N` to show which line "money" first occurs to better help where exactly does the word appear. This is useful if you don't know where exactly a specific passage that you want is located in the file but know that it had "money" somewhere. You can use this to check where.
-As the string is case-sensitive, be sure that you type the string exactly. For example, if the string was "Money" then my result is `Pattern not found (press RETURN)`. From there, you would be redirected to the beginning/start of the file. You would have to press `q` to quit. Similarly, we can use `less -p` on other files. In this example, I want to see the String "String" in `DocSearchServer.java`.
+As the string is case-sensitive, be sure that you type the string exactly. For example, if the string was "Money" then my result is `Pattern not found (press RETURN)`. From there, you would be redirected to the beginning/start of the file. You would have to press `q` to quit. Similarly, we can use `less -p` on other files.
+
+In this example, I want to see the String "String" in `DocSearchServer.java`.
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch
 $ less -pString DocSearchServer.java
