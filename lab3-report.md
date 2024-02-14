@@ -442,3 +442,4 @@ I erased the previous content and now the new content after saving the file show
 
 ### Sources Referenced
 Marijan, B. (n.d.). *How to Use the less Command in Linux with Examples.* Knowledge Base by phoenixNAP. https://phoenixnap.com/kb/less-command-in-linux
+*Is there ever a reason to use `cat` when you’ve got `less`?* (n.d.). Unix & Linux Stack Exchange. https://unix.stackexchange.com/questions/21548/is-there-ever-a-reason-to-use-cat-when-youve-got-less
