@@ -64,7 +64,7 @@ public class ArrayTests {
   }
 }
 ```
-> Here, we see that there are 3 tests that fail. All of the failures had the actual value of the first element in the array as `0`. Since they all have the same symptom, we could look at one of them. Let's look at `testReversed3()`.  `input1` is an `int[]` where it has `{1, 2, 3}` and when we call the `reversed()` method on `input1` then we should expect the new array as `{3, 2, 1}`.
+Here, we see that there are 3 tests that fail. All of the failures had the actual value of the first element in the array as `0`. Since they all have the same symptom, we could look at one of them. Let's look at `testReversed3()`.  `input1` is an `int[]` where it has `{1, 2, 3}` and when we call the `reversed()` method on `input1` then we should expect the new array as `{3, 2, 1}`.
 
 `testReverseInPlace()`, `testReversed()`, and `testReversedInPlaceLen3()` are 3 tests that did not induce a failure.
 
@@ -78,7 +78,6 @@ There were 3 failures:
 FAILURES!!!
 Tests run: 6,  Failures: 3
 ```
-
 
 This is what we see when we compile and run our tests with `java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore ArrayTests`. This is our **symptom** after running the test. Uh oh, that means that our expected array does not match with the reversed array when we call the `reversed()` method. The test immediately fails at the iteration section of our `reversed()` method and we should check back (since the first element in the new array when reversing was `0` but we both know that it should be `3`). Let's look at the iteration more closely...
 
@@ -125,7 +124,8 @@ trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
 $ less -N 911reports/chapter-1.txt
 ```
 This is what we get after we press enter.
-```1
+```
+	1
       2
       3
       4 "WE HAVE SOME PLANES"
@@ -153,15 +153,13 @@ This is what we get after we press enter.
      23
      24     In another Logan terminal, Shehhi, joined by Fayez Banihammad, Mohand al Shehri, Ahmed al Ghamdi, and Hamza al Ghamdi, checked in for Un     24 ited Airlines Flight 175, also bound for Los Angeles. A couple of Shehhi's colleagues were obviously unused to travel; according to the Unit     24 ed ticket agent, they had trouble understanding the standard security questions, and she had to go over them slowly until they gave the rout     24 ine, reassuring answers.
 ```
-> With `./technical` as the directory, we can display the number of lines of a specific file. Note that this is not all of the file. You can press `enter` to go "down" the file. Especially with readings and code programs, `less -N <filemame>` will help with locating the exact position of what we desire within the file. For example, we might want to know what line of the program works or what specific passage we are interested in. Additionally, it helps with not losing track of where you were reading. I know that sometimes with a lot of words on the screen, we may forget where we left off.
+With `./technical` as the directory, we can display the number of lines of a specific file. Note that this is not all of the file. You can press `enter` to go "down" the file. Especially with readings and code programs, `less -N <filemame>` will help with locating the exact position of what we desire within the file. For example, we might want to know what line of the program works or what specific passage we are interested in. Additionally, it helps with not losing track of where you were reading. I know that sometimes with a lot of words on the screen, we may forget where we left off.
 
 And we can also use it with programming files too
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch
 $ less -N Server.java
-```
-And this is what we will see:
-```
+
  1 // A simple web server using Java's built-in HttpServer
       2
       3 // Examples from https://dzone.com/articles/simple-http-server-in-java were useful references
@@ -207,15 +205,14 @@ And this is what we will see:
      43 public class Server {
      44     public static void start(int port, URLHandler handler) throws IOException {
 ```
-> If we wanted to read a file that is not `.txt`, `less` can also apply the number of lines in a `java` program. One thing to also note is that `cat` could work too! `cat -n <filename>` would also do the same as `less -N <filename>`. The difference is that with `cat`, you are not in the "infinite loop" of the screen. Also, `less` is interactive (ie. we can press `enter` to move down a line) and as such, some would prefer `cat` over `less`.
+If we wanted to read a file that is not `.txt`, `less` can also apply the number of lines in a `java` program. One thing to also note is that `cat` could work too! `cat -n <filename>` would also do the same as `less -N <filename>`. The difference is that with `cat`, you are not in the "infinite loop" of the screen. Also, `less` is interactive (ie. we can press `enter` to move down a line) and as such, some would prefer `cat` over `less`.
+
 ### less -p [String] [filename]
 This command is also known as "pattern search", where the command will find the `String` in the file. The string is case-sensitive! Let's say that we want to see where the word "money" appears in `Oregon_Poor.txt` 
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
 $ less -N -pmoney government/Media/Oregon_Poor.txt
-```
-And we can see that "money" appears here.
-```
+
 66 lawyers to volunteer services (and money) to help full-time Legal
      67 Aid professionals lift the load.
      68 More family-law services are essential, especially in child
