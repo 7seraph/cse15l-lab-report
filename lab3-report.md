@@ -118,7 +118,7 @@ Woohoo! All of our tests run without any failure, ensuring that the methods did 
 
 ## Part 2: Researching Commands
 The `less` command has a bunch of options and there are 4 that I want to highlight.
-### less -N <filename>
+### less -N filename
 This command option shows line numbers in the file.
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
@@ -208,7 +208,7 @@ And this is what we will see:
      44     public static void start(int port, URLHandler handler) throws IOException {
 ```
 > If we wanted to read a file that is not `.txt`, `less` can also apply the number of lines in a `java` program. One thing to also note is that `cat` could work too! `cat -n <filename>` would also do the same as `less -N <filename>`. The only difference is that with `cat`, you are not in the "infinite loop" of the screen. 
-### less -p <String> <filename>
-### less -s <filename>
+### less -p [String] [filename]
+### less -s [filename]
 ### less -X <filename>
 
