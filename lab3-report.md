@@ -401,27 +401,19 @@ for (int i = 0; i < arr.length; i++) {
 ```
 This would be useful if you wanted to see more content on the screen rather than just seeing multiple blank lines. Also, this would be nice to see a more consised version of the file for ease of visibility.
 ### less +F [filename]
-This command-line option is real-time monitoring on files.
+This command-line option is real-time monitoring on files. If I type something new in the `.txt` file and save it, we can see that it is updated and shows on the terminal!
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/Downloads
 $ less +F testingless.txt
 
 hello
-Waiting for data...(^X or interrupt to abort)
-```
-If I type something new in the `.txt` file and save it, we can see that it is updated and shows on the terminal!
-```
-hello
+//new input and save file
 my name is kevin
-Waiting for data...(^X or interrupt to abort)
-```
-And we can keep going with this! And we don't have to save it after every line. As long as there is a change in the file, we can see it.
-```
-hello
-my name is kevin
+//new input and save file again
 and this is where new data is being shown
 Waiting for data...(^X or interrupt to abort)
 ```
+And we can keep going with this! And we don't have to save it after every line. As long as there is a change in the file, we can see it.
 We can also test this command-line option with `./technical` directories to see what will happen. Let's change the file to something more "interesting". The change will occur when I save the file.
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
