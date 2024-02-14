@@ -118,11 +118,11 @@ Woohoo! All of our tests run without any failure, ensuring that the methods did 
 
 ## Part 2: Researching Commands
 The `less` command has a bunch of options and there are 4 that I want to highlight.
-### less -N filename
+### less -N  [filename]
 This command option shows line numbers in the file.
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
-cat 911reports/chapter-1.txt
+$ less -N 911reports/chapter-1.txt
 ```
 This is what we get after we press enter.
 ```1
@@ -158,7 +158,7 @@ This is what we get after we press enter.
 And we can also use it with programming files too
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch
-less -N Server.java
+$ less -N Server.java
 ```
 And this is what we will see:
 ```
@@ -207,8 +207,238 @@ And this is what we will see:
      43 public class Server {
      44     public static void start(int port, URLHandler handler) throws IOException {
 ```
-> If we wanted to read a file that is not `.txt`, `less` can also apply the number of lines in a `java` program. One thing to also note is that `cat` could work too! `cat -n <filename>` would also do the same as `less -N <filename>`. The only difference is that with `cat`, you are not in the "infinite loop" of the screen. 
+> If we wanted to read a file that is not `.txt`, `less` can also apply the number of lines in a `java` program. One thing to also note is that `cat` could work too! `cat -n <filename>` would also do the same as `less -N <filename>`. The difference is that with `cat`, you are not in the "infinite loop" of the screen. Also, `less` is interactive (ie. we can press `enter` to move down a line) and as such, some would prefer `cat` over `less`.
 ### less -p [String] [filename]
-### less -s [filename]
-### less -X <filename>
+This command is also known as "pattern search", where the command will find the `String` in the file. The string is case-sensitive! Let's say that we want to see where the word "money" appears in `Oregon_Poor.txt` 
+```
+trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
+$ less -N -pmoney government/Media/Oregon_Poor.txt
+```
+And we can see that "money" appears here.
+```
+66 lawyers to volunteer services (and money) to help full-time Legal
+     67 Aid professionals lift the load.
+     68 More family-law services are essential, especially in child
+     69 custody and domestic violence cases, the bar study reports.
+     70 Advocacy help is needed to increase the quantity and quality of
+     71 housing for low-income people, reduce unlawful discrimination and
+     72 enforce the residential landlord tenant act in the face of
+     73 evictions. Cases involving collection of wages, wrongful discharge,
+     74 discrimination and unsafe working conditions have become
+     75 conspicuous as Oregonians struggle against a vicious economic
+     76 undertow.
+     77 The urgent thrust of this year's Lawyers' Campaign for Equal
+     78 Justice, now at full flood, is to have more private lawyers throw
+     79 lifelines to the poor, elderly, disabled, unemployed and
+     80 disadvantaged drowning in the legal surf.
+```
+> I did use `-N` to show which line "money" first occurs to better help where exactly does the word appear. This is useful if you don't know where exactly a specific passage that you want is located in the file but know that it had "money" somewhere. You can use this to check where.
+As the string is case-sensitive, be sure that you type the string exactly. For example, if the string was "Money" then my result is `Pattern not found (press RETURN)`. From there, you would be redirected to the beginning/start of the file. You would have to press `q` to quit. Similarly, we can use `less -p` on other files.
+```
+trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch
+$ less -pString DocSearchServer.java
 
+ 28     static String readFile(File f) throws IOException {
+     29         return new String(Files.readAllBytes(f.toPath()));
+     30     }
+     31 }
+     32
+     33 class Handler implements URLHandler {
+     34     Path base;
+     35     Handler(String directory) throws IOException {
+     36       this.base = Paths.get(directory);
+     37     }
+     38     public String handleRequest(URI url) throws IOException {
+     39        List<File> paths = FileHelpers.getFiles(this.base);
+     40        if (url.getPath().equals("/")) {
+     41            return String.format("There are %d total files to search.", paths.size());
+     42        } else if (url.getPath().equals("/search")) {
+     43            String[] parameters = url.getQuery().split("=");
+     44            if (parameters[0].equals("q")) {
+     45                String result = "";
+     46                List<String> foundPaths = new ArrayList<>();
+     47                for(File f: paths) {
+     48                    if(FileHelpers.readFile(f).contains(parameters[1])) {
+     49                        foundPaths.add(f.toString());
+     50                    }
+     51                }
+     52                Collections.sort(foundPaths);
+     53                result = String.join("\n", foundPaths);
+     54                return String.format("Found %d paths:\n%s", foundPaths.size(), result);
+     55            }
+     56            else {
+     57                return "Couldn't find query parameter q";
+     58            }
+     59        }
+     60        else {
+     61            return "Don't know how to handle that path!";
+     62        }
+     63     }
+     64 }
+     65
+     66 class DocSearchServer {
+     67     public static void main(String[] args) throws IOException {
+     68         if(args.length <2){
+     69             System.out.println("Missing port number or directory! The first argument should be the port number (Try any number between 1024 
+     69 to 49151) and the second argument should be the path of the directory");
+     70             return;
+```
+Since we can't highlight the String "String" in codeblocks, all of the words that contain "String" are highlighted in the terminal.
+### less -s [filename]
+This command option "squeezes" multiple lines together.
+```
+trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch
+$ less -s technical/government/Alcohol_Problems/Session2-PDF.txt
+
+Session 2.
+Identifying ED Patients with Alcohol Problems
+
+Robert Woolard, MD
+Many patients in the emergency department (ED) have alcohol
+problems, and they can be identified.1 Research on techniques used
+to identify these patients has been conducted, but several areas of
+interest should be addressed by further research. We need to
+further examine and refine alcohol-screening questionnaires in the
+ED. We need to determine the sequence and combination of questions
+and tests that constitute the best screening process. We need to
+study barriers to screening, identify factors that promote
+screening implementation, and demonstrate the impact of a screening
+program in the ED. The final aim of screening must be improved
+outcomes through referral and counseling. Identification is only
+the first step in a process of care.
+Alcohol problems defined
+Alcohol problems designate a spectrum from risk behavior to
+illness, and from problematic consumption to alcohol use disorder.
+We must be careful when interpreting the results of studies, and in
+our own design of screening procedures, that we are clear about the
+endpoints we are measuring. Clinicians in the ED are interested in
+screening for several alcohol endpoints. Acute intoxication is of
+concern to emergency physicians. Intoxication in a driver would
+certainly be considered an "alcohol problem." The blood or breath
+alcohol concentration (BAC), coupled with our clinical
+observations, may help us identify intoxication. Most alcohol
+screening tests identify patients with alcohol use disorders or
+problematic consumption of alcohol. The American Psychiatric
+Association in DSM III-R, IV2 and the World Health Organization
+(WHO) in the 9th and 10th International Classification of Diseases
+(ICD-9, -10) have rigorously defined alcohol abuse and alcohol
+dependence.3 These definitions largely agree for dependence, but
+not for abuse. DSM includes social and legal consequences of abuse
+and ICD-10 has only medical and psychological consequences. Fewer
+cases of alcohol abuse meet the ICD-10 definition. In general, an
+alcohol use disorder is present when an aspect of the patient's
+function has been compromised
+by alcohol. Before function is compromised, problematic
+consumption occurs. Much of the emphasis of screening has shifted
+toward identifying patients with high alcohol consumption before
+disease develops. WHO defines hazardous drinking as 4 or more
+drinks/day for men and 2 or more drinks/day for women. The National
+```
+> The command option displays the file at the beginning and wherever there are multiple blank lines, the command will remove them so that we can see more of the content. Unfortunately, the files in `./technical` don't have multiple lines (it seems).
+Let's say for example I make a `.txt` file named `cse12pa1.txt` that includes:
+```
+1        2      3   
+rock    paper  scissors    
+arr[0] arr[1] arr[2] 
+
+rock beats scissors
+paper beats rock
+
+
+
+scissors beats paper
+
+
+rock > scissors
+paper > rock
+scissors > paper
+
+arr[0] > arr[2]
+
+
+
+arr[1] > arr[0]
+
+
+arr[2] > arr[1]
+```
+Notice how there are multiple blank lines...but now when we use `less -s cse12pa1.txt`, we can see that the multiple blank lines are removed. 
+```
+$ /c/Users/trank/Downloads
+$ less -s cse12
+
+1        2      3
+rock    paper  scissors
+arr[0] arr[1] arr[2]
+
+rock beats scissors
+paper beats rock
+
+scissors beats paper
+
+rock > scissors
+paper > rock
+scissors > paper
+
+arr[0] > arr[2]
+
+arr[1] > arr[0]
+
+arr[2] > arr[1]
+
+0 > 2
+1 > 0
+2 > 1
+
+playerMove --> arr[0]
+cpuMove --> arr[0]
+
+for (int i = 0; i < arr.length; i++) {
+        if (playerMove[i].equals(cpuMove) {
+                return 0;
+        else if (playerMove[i]
+}
+```
+This would be useful if you wanted to see more content on the screen rather than just seeing multiple blank lines. Also, this would be nice to see a more consised version of the file for ease of visibility.
+### less +F [filename]
+This command-line option is real-time monitoring on files.
+```
+trank@LAPTOP-R6OGQ529 MINGW64 ~/Downloads
+$ less +F testingless.txt
+
+hello
+Waiting for data...(^X or interrupt to abort)
+```
+If I type something new in the `.txt` file and save it, we can see that it is updated and shows on the terminal!
+```
+hello
+my name is kevin
+Waiting for data...(^X or interrupt to abort)
+```
+And we can keep going with this! And we don't have to save it after every line. As long as there is a change in the file, we can see it.
+```
+hello
+my name is kevin
+and this is where new data is being shown
+Waiting for data...(^X or interrupt to abort)
+```
+We can also test this command-line option with `./technical` directories to see what will happen. Let's change the file to something more "interesting". The change will occur when I save the file.
+```
+trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch/technical
+$ less +F biomed/rr73.txt
+//BEFORE 
+Introduction
+        Three-dimensional (3D) collagen gel culture has been
+        used as an 
+        in vitro model of 
+        in vivo tissue contraction, a common
+        feature of fibrosis, as well as the resolution of
+        granulation tissue that characterizes repair [ 1, 2].
+//AFTER
+Peter Piper picked a peck of pickled peppers!
+Waiting for data...(^X or interrupt to abort)
+```
+I erased the previous content and now the new content after saving the file shows "Peter Piper picked a peck of pickled peppers!" This would be useful if you wanted to see if the file has updated as expected or even see what was modified. 
+
+### Sources Referenced
+Marijan, B. (n.d.). *How to Use the less Command in Linux with Examples.* Knowledge Base by phoenixNAP. [https://phoenixnap.com/kb/less-command-in-linux] (https://phoenixnap.com/kb/less-command-in-linux)
