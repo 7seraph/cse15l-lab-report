@@ -49,11 +49,17 @@ for(int i = 0; i < arr.length; i += 1) {
     return arr;
   }
 ```
-The idea of how you can think of this bug is that we should put the elements from `arr` into `newArray`.  However, `arr[i] = newArray[arr.length - i - 1]` means that we are taking the element from `newArray` into that specific index in `arr`. 
-> Note, that `newArray` is new and `int`. By default when we don't assign a value to `int`, it will be `0`. That's why our actual value is `0`.
+The idea of how you can think of this bug is that we should put the elements from `arr` into `newArray`.  However, `arr[i] = newArray[arr.length - i - 1]` means that we are taking the element from `newArray` into that specific index to `arr`. Therefore, the elements in `arr` would be all 0s.
+> Note, that `newArray` is a new `int[]`. By default when we don't assign a value to `int`, it will be `0`. That's why our actual value was `0` and the test failed.
 
-How would this look like? Well, we should create a new `int[]` array named something like `newArray` (for convention) with the same length as `arr`. Then, we can iterate through `arr` **BUT** we need to ensure that the element obtains a new index.
-
-```
+How would we fix this? Well, we should create a new `int[]` array named something like `newArray` (for convention) with the same length as `arr`. Then, we can iterate through `arr` **BUT** we need to ensure that the element obtains a new index. We want to "copy" the elements in `arr` to `newArray`, just with a reversed order. 
 
 ```
+//segment of the updated reversed() method
+for(int i = 0; i < arr.length; i += 1) {
+      newArray[i] = arr[arr.length - i - 1];
+    }
+    return newArray;
+  }
+```
+Now the `for-loop` correctly copies all the elements from `arr` to `newArray`.
