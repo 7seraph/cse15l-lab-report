@@ -230,12 +230,12 @@ $ less -N -pmoney government/Media/Oregon_Poor.txt
      80 disadvantaged drowning in the legal surf.
 ```
 > I did use `-N` to show which line "money" first occurs to better help where exactly does the word appear. This is useful if you don't know where exactly a specific passage that you want is located in the file but know that it had "money" somewhere. You can use this to check where.
-As the string is case-sensitive, be sure that you type the string exactly. For example, if the string was "Money" then my result is `Pattern not found (press RETURN)`. From there, you would be redirected to the beginning/start of the file. You would have to press `q` to quit. Similarly, we can use `less -p` on other files.
+As the string is case-sensitive, be sure that you type the string exactly. For example, if the string was "Money" then my result is `Pattern not found (press RETURN)`. From there, you would be redirected to the beginning/start of the file. You would have to press `q` to quit. Similarly, we can use `less -p` on other files. In this example, I want to see the String "String" in `DocSearchServer.java`.
 ```
 trank@LAPTOP-R6OGQ529 MINGW64 ~/docsearch
 $ less -pString DocSearchServer.java
 
- 28     static String readFile(File f) throws IOException {
+ 	28     static String readFile(File f) throws IOException {
      29         return new String(Files.readAllBytes(f.toPath()));
      30     }
      31 }
@@ -331,7 +331,7 @@ toward identifying patients with high alcohol consumption before
 disease develops. WHO defines hazardous drinking as 4 or more
 drinks/day for men and 2 or more drinks/day for women. The National
 ```
-> The command option displays the file at the beginning and wherever there are multiple blank lines, the command will remove them so that we can see more of the content. Unfortunately, the files in `./technical` don't have multiple lines (it seems).
+The command option displays the file at the beginning and wherever there are multiple blank lines, the command will remove them so that we can see more of the content. Unfortunately, the files in `./technical` don't have multiple lines (it seems).
 Let's say for example I make a `.txt` file named `cse12pa1.txt` that includes:
 ```
 1        2      3   
