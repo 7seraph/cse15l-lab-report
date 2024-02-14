@@ -441,4 +441,4 @@ Waiting for data...(^X or interrupt to abort)
 I erased the previous content and now the new content after saving the file shows "Peter Piper picked a peck of pickled peppers!" This would be useful if you wanted to see if the file has updated as expected or even see what was modified. 
 
 ### Sources Referenced
-Marijan, B. (n.d.). *How to Use the less Command in Linux with Examples.* Knowledge Base by phoenixNAP. [https://phoenixnap.com/kb/less-command-in-linux] (https://phoenixnap.com/kb/less-command-in-linux)
+Marijan, B. (n.d.). *How to Use the less Command in Linux with Examples.* Knowledge Base by phoenixNAP. https://phoenixnap.com/kb/less-command-in-linux
