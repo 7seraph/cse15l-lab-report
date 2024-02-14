@@ -1,5 +1,6 @@
 # Lab 3 - Bugs and Commands
 ---
+## Part 1: Bugs
 One of the bugs in the week 4 lab was assigning variables to create a "new" array. In `ArrayExamples.java` the implementation of the `reversed(int[] arr)` method follows: create a copy of the array `arr` -- the parameter of `reversed()` and return the same array but the elements in the reversed order. The `reversed(int[] arr)` method was already created for us.
 ```
 public class ArrayExamples {
@@ -16,7 +17,7 @@ public class ArrayExamples {
 ```
 Nice, so we created a new array named `newArray` with the length of `arr`. Next, we iterate through and assign the elements from `arr` into the `newArray` array. Looks good so far! Let's run JUnit and ensure that our method works as intended!
 
-## Failure-inducing Input (Test)
+### Failure-inducing Input (Test)
 
 ```
 import static org.junit.Assert.*;
@@ -65,6 +66,8 @@ public class ArrayTests {
 ```
 > Here, we see that there are 3 tests that fail. All of the failures had the actual value of the first element in the array as `0`. Since they all have the same symptom, we could look at one of them. Let's look at `testReversed3()`.  `input1` is an `int[]` where it has `{1, 2, 3}` and when we call the `reversed()` method on `input1` then we should expect the new array as `{3, 2, 1}`.
 
+`testReverseInPlace()`, `testReversed()`, and `testReversedInPlaceLen3()` are 3 tests that did not induce a failure.
+
 ```
 java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore ArrayTests
 JUnit version 4.13.2
@@ -75,10 +78,12 @@ There were 3 failures:
 FAILURES!!!
 Tests run: 6,  Failures: 3
 ```
+
+
 This is what we see when we compile and run our tests with `java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore ArrayTests`. This is our **symptom** after running the test. Uh oh, that means that our expected array does not match with the reversed array when we call the `reversed()` method. The test immediately fails at the iteration section of our `reversed()` method and we should check back (since the first element in the new array when reversing was `0` but we both know that it should be `3`). Let's look at the iteration more closely...
 
-## The Bug
-Ah-ha! We can see that assigning the variables `newArray` and `arr` are swapped around.
+### The Bug
+Ah-ha! We can see that assigning the variables `newArray` and `arr` are swapped around. This is the bug **before**:
 ```
 //segment of the reversed() method
 for(int i = 0; i < arr.length; i += 1) {
@@ -100,7 +105,7 @@ for(int i = 0; i < arr.length; i += 1) {
     return newArray;
   }
 ```
-Now the `for-loop` correctly copies all the elements from `arr` to `newArray`. We can run JUnit test again to see if that fixed the bug.
+The is the bug **after**. Now the `for-loop` correctly copies all the elements from `arr` to `newArray`. We can run JUnit test again to see if that fixed the bug.
 ```
 java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore ArrayTests
 JUnit version 4.13.2
@@ -109,3 +114,6 @@ Time: 0.009
 
 OK (6 tests)
 ```
+Woohoo! All of our tests run without any failure, ensuring that the methods did as we intended it to do. 
+
+## Part 2: Researching Commands
