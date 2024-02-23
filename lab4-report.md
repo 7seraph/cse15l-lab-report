@@ -38,11 +38,14 @@ Then I type `.java` because we want to edit `ListExamples.java` and hit `<enter>
 ![Step7.2](lab4-step7-2.png)
 - Begin keystrokes `:$ <enter> j j j j j j l l l l x i 2 <esc> :wq! <enter>`
 While I am in "normal mode" (this is where I can move the curor around **BUT** not edit the file), I type `:$` followed by `<enter>` and that makes the cursor go to the last line which is `}`. I then press `j` 6 times to move the cursor up 6 lines. In order to move to the right, I press `l` 4 times to move the cursor 4 to the right such that the cursor is on `1` of `index1`.
+
 ![Step7.3](lab4-step7-3.png)
-- Next, I press `x` to remove the `1` and then press `i` to go to "insert mode". Once in insert mode, any keys that I press will be before the cursor--I could also use `a` instead of `i` but `a` will insert after the cursor; so I would have the cursor over `x` in `index`. This is where I type `2` so now it is `index2`. To exit out of insert mode, I press `<esc>`. Finally, I press `:wq!` followed by `<enter>` to save (`w`) and quit (`q`) vim. The `!` is to override or force the operation. 
+- Next, I press `x` to remove the `1` and then press `i` to go to "insert mode". Once in insert mode, any keys that I press will be before the cursor--I could also use `a` instead of `i` but `a` will insert after the cursor; so I would have the cursor over `x` in `index`. This is where I type `2` so now it is `index2`. To exit out of insert mode, I press `<esc>`. Finally, I press `:wq!` followed by `<enter>` to save (`w`) and quit (`q`) vim. The `!` is to override or force the operation.
+
 ![Step7.4](lab4-step7-4.png)
 - Once I press enter after `:wq!`, vim will exit and I am back to my terminal.
 This ensures that we are back. It is important that we exit vim!
+
 ## Step 8: Run the test, demonstrating that they now succeed
 ![Step8](lab4-step8.png)
 - `bash test.sh <enter>`
