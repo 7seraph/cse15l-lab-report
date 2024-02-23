@@ -10,12 +10,14 @@ We use `ssh` to remotly connect to a computer (in this case, we are attempting t
 ## Step 5: Clone your fork of the repository from you Github account (using the SSH URL)
 Obtain the Github SSH link
 `git clone git@github.com:7seraph/lab7.git <enter>`
+![Step5.1](lab4-step5-1.png)
 We are using `git` to: 
 1. Clone the forked repository of lab 7 (https://github.com/7seraph/lab7) using the **SSH Link Option**! Note: the SSH Link option is located at the green `Code` button -> click on `SSH` and you will get the link.
 2. Copy the link and use `git clone` followed by the `ssh link`. Hit `<enter>`. 
-![Step5.1](lab4-step5-1.png)
 
 ![Step5.2](lab4-step5-2.png)
+We will know that it is a successful clone when we don't get an error message. 
+
 ![Step5.3](lab4-step5-3.png)
 `cd la <tab> <enter> ls`
 Now we want to be in the `lab7` directory so we will use the `cd` command. For efficiency, I type `cd la` followed by `<tab>` for completion. I don't have to manually type `cd lab7`. Then I chech the contents inside the `lab7` directory with `ls`. That way, I can see what files and directories are inside (just for my sanity).
