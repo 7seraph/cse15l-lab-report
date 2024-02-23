@@ -8,7 +8,6 @@ Steps 4 through 9 demonstrates a scenario where we will clone one of our reposit
 We use `ssh` to remotly connect to a computer (in this case, we are attempting to connect to a computer on the `ieng6` machine), then we hit `<enter>`. A lot of stuff will happen and at this point in the quarter, we should not be prompted to input our password to `ssh`.
 
 ## Step 5: Clone your fork of the repository from you Github account (using the SSH URL)
-![Step5](lab4-step5.png)
 Obtain the Github SSH link
 `git clone git@github.com:7seraph/lab7.git <enter>`
 We are using `git` to: 
