@@ -17,7 +17,7 @@ We are using `git` to:
 
 ![Step5.1.2](lab4-copyurl.png)
 1. Then we can go back into `bash` and type `git clone` followed by the `ssh link`. Since the link is copied onto our clipboard, we just need to `paste` the link after `git clone`. We can do that by holding down `<ctrl>` and pressing `<p>` once to paste. Note: Be careful not to press `<p>` multiple times when holding down `<ctrl>` because we will paste the link again and again and again... (we only need to paste once!) 
-2. If done correctly, the prompt will be: `git clone https://github.com/7seraph/lab7`
+2. If done correctly, the prompt will be: `git clone git@github.com:7seraph/lab7.git`
 3. Hit `<enter>` (don't worry about all of the stuff that appears! As long as the message includes "done" and that we are given another prompt, then we are good for the next step). If in the event that the message does not look like this (maybe with more error codes), then it could mean that there may be an issue (`git clone` or link). Please check if you typed it in correctly!
 
 ![Step5.2](lab4-step5-2.png)
