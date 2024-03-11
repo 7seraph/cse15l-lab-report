@@ -38,4 +38,5 @@ Example directory structure, file contents in parentheses
 Hmm, there is a lot of variables assigned to different expressions. What are the values of each variable? Do they match appropriately? In other words, is there a way to check if each variable is assigned properly? How could we check? 
 > The student recognizes that the symptom occurs at line 61 in their shell script. The student also mentioned that they attempted to fix the error but the issue is still there. Since there are a lot of variable declaration, the student should make sure that the variables are assigned correctly. Therefore the issue could be the line itself and if the student attempts to fix the issue but error persists, then we can check if the lines before line 61 has an issue.
 
-**Student Response (Updated)**: 
+**Student Response (Updated)**: I've printed out `$TOTALTESTS` and `$FAILED` with `echo`. Both are incorrectly assigned! They should be assigned a numerical value.
+[screenshot of updated error]
