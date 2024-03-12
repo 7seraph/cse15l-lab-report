@@ -190,6 +190,9 @@ GRADE=($PASSED/$TOTALTESTS)
 echo 'Your Grade is :' $GRADE
 ```
 ![lab5-step3](lab5-step3.png)
+
+---
+
 ![lab5-step4](lab5-step4.png)
 By updating `TOTALTESTS` to separate the output from JUnit to specifically the number of tests that ran (the numerical value) and `FAILED` to count for the number of times 'E' occurs from the `test-results.txt` file. The reason for this is to account when running a student submission and a test fails. 'E' in JUnit means that there is an error (or when a test fails). The `wc` command counts for the number of 'E' in the `test-results.txt` file and updates the `FAILED` variable accordingly. Normally, we could just leave the `FAILED` line of code as is but the issue is that the code does not assign itself to a value--`FAILED` is "blank" because let's say for example that all of the tests pass on a student submission...the expectation is that `FAILED = 0` beacuse all tests passsed. However, `FAILED` prints the 6th argument..which there's nothing at the 6th argument. Therefore, `FAILED` equals to nothing and could be an issue when doing arithmetic; hence why the issue appeared in the first place because bash assumes we want `$TOTALTESTS-` and it bash does not know what to do with that but report a syntax error. 
 
